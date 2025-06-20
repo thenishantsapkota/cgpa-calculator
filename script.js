@@ -1,5 +1,73 @@
 let semesterCount = 0;
 
+const bcePreset = [
+  [
+    ["Engineering Mathematics I", 3],
+    ["Physics", 4],
+    ["Thermal Science", 2],
+    ["Engineering Drawing", 2],
+    ["Programming in C", 3],
+    ["Basic Electrical Engineering", 3],
+  ],
+  [
+    ["Engineering Mathematics II", 3],
+    ["Chemistry", 4],
+    ["Object Oriented Programming in C++", 3],
+    ["Communication Techniques", 2],
+    ["Mechanical Workshop", 1],
+    ["Applied Mechanics I", 3],
+  ],
+  [
+    ["Engineering Mathematics III", 3],
+    ["Applied Mechanics II", 2],
+    ["Civil Engineering Materials", 2],
+    ["Fluid Mechanics", 3],
+    ["Strength of Materials", 3],
+    ["Engineering Geology", 3],
+    ["Project I", 1],
+  ],
+  [
+    ["Probability and Statistics", 3],
+    ["Surveying I", 3],
+    ["Basic Electronics Engineering", 2],
+    ["Numerical Methods", 3],
+    ["Hydraulics", 3],
+    ["Structural Analysis I", 3],
+  ],
+  [
+    ["Building Technology", 2],
+    ["Engineering Hydrology", 2],
+    ["Structural Analysis II", 3],
+    ["Soil Mechanics", 4],
+    ["Water Supply Engineering", 3],
+    ["Concrete Technology & Masonry Structures", 3],
+    ["Project II", 1],
+  ],
+  [
+    ["Irrigation Engineering", 3],
+    ["Design of Steel and Timber Structures", 3],
+    ["Foundation Engineering", 3],
+    ["Sanitary Engineering", 3],
+    ["Survey Field Project", 1],
+    ["Surveying II", 3],
+  ],
+  [
+    ["Design of R.C.C. Structures", 3],
+    ["Transportation Engineering I", 3],
+    ["Hydropower Engineering", 3],
+    ["Estimating and Valuation", 3],
+    ["Elective I", 3],
+    ["Engineering Economics", 3],
+  ],
+  [
+    ["Construction Project Management", 3],
+    ["Engineering Professional Practice", 2],
+    ["Transportation Engineering II", 3],
+    ["Elective II", 3],
+    ["Project III", 5],
+  ],
+];
+
 const bctPreset = [
   [
     ["Engineering Mathematics I", 3],
@@ -67,6 +135,73 @@ const bctPreset = [
   ],
 ];
 
+const bctPresetNew = [
+  [
+    ["Basic Electrical Engineering", 3],
+    ["Calculus - I", 3],
+    ["Communication Techniques", 2],
+    ["Computer Workshop", 1],
+    ["Digital Logic", 3],
+    ["Electronics Devices and Circuits", 3],
+    ["Programming in C", 3],
+  ],
+  [
+    ["Algebra and Geometry", 3],
+    ["Applied Chemistry", 2],
+    ["Applied Physics", 3],
+    ["Basic Engineering Drawing", 1],
+    ["Data Structures and Algorithms", 3],
+    ["Object Oriented Programming in C++", 3],
+    ["Instrumentation", 3],
+  ],
+  [
+    ["Calculus - II", 3],
+    ["Computer Graphics", 3],
+    ["Data Communication", 3],
+    ["Database Management Systems", 3],
+    ["Microprocessor and ALP", 3],
+    ["Operating Systems", 3],
+  ],
+  [
+    ["Advanced Programming with Java", 3],
+    ["Applied Mathematics", 3],
+    ["Computer Architecture", 3],
+    ["Numerical Methods", 2],
+    ["Research Fundamentals", 2],
+    ["Theory of Computation", 3],
+  ],
+  [
+    ["Artificial Intelligence", 3],
+    ["Digital Signal Analysis and Processing", 3],
+    ["Embedded Systems", 2],
+    ["Engineering Management", 2],
+    ["Probability and Statistics", 2],
+    ["Software Engineering", 3],
+  ],
+  [
+    ["Compiler Design", 2],
+    ["Computer Networks", 3],
+    ["Elective I", 3],
+    ["Image Processing and Pattern Recognition", 3],
+    ["Machine Learning", 3],
+    ["Project I", 1],
+    ["Simulation and Modeling", 3],
+  ],
+  [
+    ["Cloud Computing and Virtualization", 3],
+    ["Data Science and Analytics", 3],
+    ["Engineering Economics", 3],
+    ["Entrepreneurship and Professional Practice", 2],
+    ["Network and Cyber Security", 3],
+    ["Elective II", 3],
+  ],
+  [
+    ["Elective III", 3],
+    ["Internship", 3],
+    ["Project II", 3],
+  ],
+];
+
 function hideEmptyState() {
   const emptyState = document.querySelector(".empty-state");
   if (emptyState) emptyState.style.display = "none";
@@ -86,6 +221,22 @@ function getGradeOptionsHTML() {
     <option value="1.3">D+</option>
     <option value="1.0">D</option>
   `;
+}
+
+function resetSemesters() {
+  document.getElementById("semesters").innerHTML = "";
+  semesterCount = 0;
+  const outputDiv = document.getElementById("output");
+  outputDiv.innerHTML = "";
+  outputDiv.style.display = "none";
+  const emptyState = document.querySelector(".empty-state");
+  if (emptyState) emptyState.style.display = "block";
+}
+
+function handlePresetSelect(preset) {
+  if (preset) {
+    addPresetSemesters(preset);
+  }
 }
 
 function addSemester(subjects = []) {
@@ -155,10 +306,16 @@ function addSemester(subjects = []) {
   container.appendChild(semesterDiv);
 }
 
-function addPresetSemesters() {
+function addPresetSemesters(course) {
   document.getElementById("semesters").innerHTML = "";
   semesterCount = 0;
-  bctPreset.forEach((sem) => addSemester(sem));
+  if (course === "bce") {
+    bcePreset.forEach((sem) => addSemester(sem));
+  } else if (course === "bct") {
+    bctPresetNew.forEach((sem) => addSemester(sem));
+  } else if (course === "bct-old") {
+    bctPreset.forEach((sem) => addSemester(sem));
+  }
 }
 
 function addSubject(semesterId) {

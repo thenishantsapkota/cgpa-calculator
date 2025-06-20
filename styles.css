@@ -368,6 +368,15 @@ select:invalid {
   opacity: 0.5;
 }
 
+.select-preset {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  margin-right: 1rem;
+}
+
 @media (max-width: 768px) {
   .container {
     margin: 0;
