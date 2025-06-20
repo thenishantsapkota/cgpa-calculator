@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGPA & CGPA Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎓 Pokhara University GPA Calculator</h1>
+      <p>Calculate your SGPA and CGPA with ease</p>
+    </div>
+    
+    <div class="content">
+      <form id="semesterForm">
+        <div class="controls">
+          <button type="button" class="btn-preset" onclick="addPresetSemesters()">
+            📘 Load BCT Preset
+          </button>
+          <button type="button" class="btn-add" onclick="addSemester()">
+            ➕ Add Semester
+          </button>
+          <button type="submit" class="btn-calculate">
+            📊 Calculate GPA
+          </button>
+        </div>
+        
+        <div id="semesters">
+          <div class="empty-state">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.832 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+            <h3>No semesters added yet</h3>
+            <p>Add a semester or load the BCT preset to get started</p>
+          </div>
+        </div>
+      </form>
+      
+      <div id="output" class="output" style="display: none;"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
