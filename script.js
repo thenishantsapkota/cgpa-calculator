@@ -234,6 +234,7 @@ function resetSemesters() {
 }
 
 function handlePresetSelect(preset) {
+  
   if (preset) {
     addPresetSemesters(preset);
   }
