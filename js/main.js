@@ -23,6 +23,7 @@ window.handlePresetSelect = (preset) => {
 
 window.addSubject = addSemester;
 window.removeRow = removeRow;
+window.addSemester = addSemester;
 
 document.addEventListener("DOMContentLoaded", function () {
   document
