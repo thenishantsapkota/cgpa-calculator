@@ -1,5 +1,5 @@
 import { bcePreset, bctPreset, bctPresetNew } from "./presets.js";
-import { addSemester, resetSemesters, removeRow } from "./semester.js";
+import { addSemester, resetSemesters, removeRow, addSubject } from "./semester.js";
 import { calculateGPA } from "./gpa.js";
 
 window.addPresetSemesters = function (course) {
@@ -21,7 +21,7 @@ window.handlePresetSelect = (preset) => {
   }
 };
 
-window.addSubject = addSemester;
+window.addSubject = addSubject;
 window.removeRow = removeRow;
 window.addSemester = addSemester;
 
